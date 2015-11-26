@@ -10,6 +10,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Bookmarks.Web.Models;
 
+using Bookmarks.Data.Models;
+
 namespace Bookmarks.Web.Controllers
 {
     [Authorize]

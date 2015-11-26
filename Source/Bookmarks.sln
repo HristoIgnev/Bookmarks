@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookmarks.Common", "Bookmar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookmarks.Data", "Data\Bookmarks.Data\Bookmarks.Data.csproj", "{CC20B2A5-3474-4469-9C54-6639C42D15BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookmarks.Models", "Data\Bookmarks.Models\Bookmarks.Models.csproj", "{FBAFD219-D5A5-4EF5-BB2B-2A28813681A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookmarks.Data.Models", "Data\Bookmarks.Models\Bookmarks.Data.Models.csproj", "{FBAFD219-D5A5-4EF5-BB2B-2A28813681A1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookmarks.Web", "Web\Bookmarks.Web\Bookmarks.Web.csproj", "{4DB2BF05-4C17-45A5-BCD9-D9183DB3E088}"
 EndProject
