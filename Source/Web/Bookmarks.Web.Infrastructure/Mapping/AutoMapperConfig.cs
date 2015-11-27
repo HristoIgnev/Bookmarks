@@ -10,9 +10,9 @@
 
     public class AutoMapperConfig
     {
-        public static void RegisterMappings()
+        public static void RegisterMappings(Assembly assembly)
         {
-            var types = Assembly.GetCallingAssembly().GetExportedTypes();
+            var types = assembly.GetExportedTypes();
 
             LoadStandardMappings(types);
             LoadCustomMappings(types);

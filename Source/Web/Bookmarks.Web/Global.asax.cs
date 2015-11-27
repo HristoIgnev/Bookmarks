@@ -1,16 +1,13 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Optimization;
-using System.Web.Routing;
-
-using Bookmarks.Web.Infrastructure.Mapping;
-
-namespace Bookmarks.Web
+﻿namespace Bookmarks.Web
 {
+    using System.Web;
+    using System.Web.Mvc;
+    using System.Web.Optimization;
+    using System.Web.Routing;
+
+    using Bookmarks.Web.Infrastructure.Mapping;
+    using System.Reflection;
+
     public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
@@ -19,8 +16,8 @@ namespace Bookmarks.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
-            AutoMapperConfig.RegisterMappings();
+            
+            AutoMapperConfig.RegisterMappings(Assembly.GetExecutingAssembly());
             ViewEngineConfig.RegisterViewEngines(ViewEngines.Engines);
         }
     }

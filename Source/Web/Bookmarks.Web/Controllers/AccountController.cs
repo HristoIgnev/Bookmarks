@@ -1,19 +1,16 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using Bookmarks.Web.ViewModels;
-
-using Bookmarks.Data.Models;
-
-namespace Bookmarks.Web.Controllers
+﻿namespace Bookmarks.Web.Controllers
 {
+    using System.Linq;
+    using System.Threading.Tasks;
+    using System.Web;
+    using System.Web.Mvc;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.Owin;
+    using Microsoft.Owin.Security;
+
+    using Bookmarks.Data.Models;
+    using Bookmarks.Web.ViewModels.Account;
+
     [Authorize]
     public class AccountController : Controller
     {
