@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookmarks.Data.Models", "Da
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookmarks.Web", "Web\Bookmarks.Web\Bookmarks.Web.csproj", "{4DB2BF05-4C17-45A5-BCD9-D9183DB3E088}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookmarks.Data.Common", "Data\Bookmarks.Data.Common\Bookmarks.Data.Common.csproj", "{0FB2AE56-F1B6-49B2-B66A-82141EC30002}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{4DB2BF05-4C17-45A5-BCD9-D9183DB3E088}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DB2BF05-4C17-45A5-BCD9-D9183DB3E088}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DB2BF05-4C17-45A5-BCD9-D9183DB3E088}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FB2AE56-F1B6-49B2-B66A-82141EC30002}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FB2AE56-F1B6-49B2-B66A-82141EC30002}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FB2AE56-F1B6-49B2-B66A-82141EC30002}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FB2AE56-F1B6-49B2-B66A-82141EC30002}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,5 +51,6 @@ Global
 		{CC20B2A5-3474-4469-9C54-6639C42D15BE} = {E21C7A4E-A988-4F64-988A-43E3AFDDB68E}
 		{FBAFD219-D5A5-4EF5-BB2B-2A28813681A1} = {E21C7A4E-A988-4F64-988A-43E3AFDDB68E}
 		{4DB2BF05-4C17-45A5-BCD9-D9183DB3E088} = {003FA1BD-7C0E-41BD-AB07-E1AD449096AD}
+		{0FB2AE56-F1B6-49B2-B66A-82141EC30002} = {E21C7A4E-A988-4F64-988A-43E3AFDDB68E}
 	EndGlobalSection
 EndGlobal

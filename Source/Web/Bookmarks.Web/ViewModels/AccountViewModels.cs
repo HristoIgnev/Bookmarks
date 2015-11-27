@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Bookmarks.Web.Models
+namespace Bookmarks.Web.ViewModels
 {
     public class ExternalLoginConfirmationViewModel
     {
@@ -49,9 +49,9 @@ namespace Bookmarks.Web.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
+        [Display(Name = "Username")]
         [EmailAddress]
-        public string Email { get; set; }
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -79,6 +79,10 @@ namespace Bookmarks.Web.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        
+        [Display(Name = "Username")]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        public string UserName { get; set; }
     }
 
     public class ResetPasswordViewModel

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace Bookmarks.Web.Models
+namespace Bookmarks.Web.ViewModels
 {
     public class IndexViewModel
     {
