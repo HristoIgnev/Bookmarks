@@ -1,7 +1,7 @@
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Bookmarks.Web.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Bookmarks.Web.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Bookmarks.Web.NinjectConfig), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Bookmarks.Web.NinjectConfig), "Stop")]
 
-namespace Bookmarks.Web.App_Start
+namespace Bookmarks.Web
 {
     using System;
     using System.Web;
@@ -15,7 +15,7 @@ namespace Bookmarks.Web.App_Start
     using Data.Common.Contracts;
     using Data.Common.Repositories;
 
-    public static class NinjectWebCommon 
+    public static class NinjectConfig 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
