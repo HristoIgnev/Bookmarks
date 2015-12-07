@@ -5,10 +5,17 @@
 
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
-
+    using System.Collections.Generic;
 
     public class User : IdentityUser
     {
+        private ICollection<Bookmark> bookmarks;
+
+        public User()
+        { 
+            this.bookmarks = new HashSet<Bookmark>();
+        }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -16,5 +23,12 @@
             // Add custom user claims here
             return userIdentity;
         }
+
+        public ICollection<Bookmark> Bookmarks
+        {
+            get { return bookmarks; }
+            set { bookmarks = value; }
+        }
+
     }
 }

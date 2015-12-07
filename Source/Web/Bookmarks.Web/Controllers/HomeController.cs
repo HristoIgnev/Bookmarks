@@ -1,13 +1,25 @@
 ﻿namespace Bookmarks.Web.Controllers
 {
     using System.Web.Mvc;
+    using Microsoft.AspNet.Identity;
+    using Data.Models;
+    using Data.Common.Contracts;
+    using System.Linq;
 
     public class HomeController : Controller
     {
+        private IRepository<Bookmark> bookmarks;
+
+        public HomeController(IRepository<Bookmark> bookmarks)
+        {
+            this.bookmarks = bookmarks;
+        }
+
         public ActionResult Index()
         {
             return View();
         }
+
         [Route("About")]
         public ActionResult About()
         {
@@ -17,11 +29,14 @@
         }
 
         [Route("Contact")]
+        [Authorize]
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            var userId = this.User.Identity.GetUserId();
 
-            return View();
+            var allbookmarks = bookmarks.All().Where(u => u.UserId == userId).ToList();
+
+            return View(allbookmarks);
         }
     }
 }

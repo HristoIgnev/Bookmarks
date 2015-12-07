@@ -1,4 +1,4 @@
-﻿namespace Bookmarks.Web.Infrastructure.Mapping
+﻿namespace Bookmarks.Web
 {
     using System;
     using System.Collections.Generic;
@@ -6,7 +6,7 @@
     using System.Reflection;
 
     using AutoMapper;
-    
+    using Infrastructure.Mapping;
 
     public class AutoMapperConfig
     {

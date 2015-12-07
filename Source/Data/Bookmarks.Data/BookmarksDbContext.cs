@@ -15,6 +15,8 @@
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<BookmarksDbContext, Configuration>());
         }
 
+        public virtual IDbSet<Bookmark> Bookmarks { get; set; }
+
         public static BookmarksDbContext Create()
         {
             return new BookmarksDbContext();

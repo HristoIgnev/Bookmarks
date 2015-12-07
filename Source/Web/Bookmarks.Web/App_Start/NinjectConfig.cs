@@ -1,7 +1,7 @@
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Bookmarks.Web.NinjectConfig), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Bookmarks.Web.NinjectConfig), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Bookmarks.Web.App_Start.NinjectConfig), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Bookmarks.Web.App_Start.NinjectConfig), "Stop")]
 
-namespace Bookmarks.Web
+namespace Bookmarks.Web.App_Start
 {
     using System;
     using System.Web;
@@ -10,8 +10,8 @@ namespace Bookmarks.Web
 
     using Ninject;
     using Ninject.Web.Common;
-    using System.Data.Entity;
     using Data;
+    using System.Data.Entity;
     using Data.Common.Contracts;
     using Data.Common.Repositories;
 
@@ -65,7 +65,7 @@ namespace Bookmarks.Web
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<DbContext>().To<BookmarksDbContext>();
+            kernel.Bind<DbContext>().To<BookmarksDbContext>().InRequestScope();
 
             kernel.Bind(typeof(IDeletableEntityRepository<>)).To(typeof(DeletableEntityRepository<>));
             kernel.Bind(typeof(IRepository<>)).To(typeof(EfGenericRepository<>));
