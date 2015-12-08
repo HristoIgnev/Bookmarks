@@ -1,84 +1,47 @@
 ﻿namespace Bookmarks.Web.ApiControllers
 {
-    using Data.Models;
-    using Data.Common.Contracts;
     using System.Web.Http;
     using System.Web.Http.Cors;
-    using ViewModels.Bookmark;
     using Microsoft.AspNet.Identity;
     using System.Linq;
+
+    using AutoMapper;
+    using AutoMapper.QueryableExtensions;
+
+    using Data.Models;
+    using Data.Common.Contracts;
+
+    using RequestModels;
+    using Infrastructure.Services.Contracts;
+    using System.Collections.Generic;
 
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class BookmarkController : ApiController
     {
-        private IRepository<Bookmark> bookmarks;
-        private IRepository<Website> websites;
-        private IRepository<Tag> tags;
+        private IBookmarksService bookmarkService;
 
-
-        public BookmarkController(IRepository<Bookmark> bookmarks, IRepository<Website> websites, IRepository<Tag> tags)
+        public BookmarkController(IBookmarksService bookmarkService)
         {
-            this.bookmarks = bookmarks;
-            this.websites = websites;
-            this.tags = tags;
+            this.bookmarkService = bookmarkService;
         }
 
         [HttpPost]
         [Authorize]
-        public IHttpActionResult CreateBookmark(BookmarkInputModel model)
+        public IHttpActionResult CreateBookmark(BookmarkRequestModel model)
         {
-            if (ModelState.IsValid && model != null)
+            if (!ModelState.IsValid || model == null)
             {
-                var userId = this.User.Identity.GetUserId();
+                return BadRequest("bookmark not added");
 
-                var bookmark = new Bookmark
-                {
-                    Description = model.Description,
-                    UserId = userId,
-                    Title = model.Title,
-                    Url = model.Url,
-                    SnapshotBase64String = model.SnapshotBase64String
-
-                };
-
-                var existingWebsite = websites.All().FirstOrDefault(x => x.Url == model.Website.Url);
-                if (existingWebsite != null)
-                {
-                    bookmark.WebSite = existingWebsite;
-                }
-                else
-                {
-                    var website = new Website
-                    {
-                        Url = model.Website.Url,
-                        FaviconBase64String = model.Website.FaviconBase64String
-                    };
-                    bookmark.WebSite = website;
-                }
-
-                var allTags = tags.All().ToList();
-
-                foreach (var tag in model.Tags)
-                {
-                    var currentTag = allTags.FirstOrDefault(x => x.Name == tag.Name);
-                    if (currentTag != null)
-                    {
-                        bookmark.Tags.Add(currentTag);
-                    }
-                    else
-                    {
-                        var tagy = new Tag { Name = tag.Name };
-
-                        bookmark.Tags.Add(tagy);
-                    }
-                }
-
-                this.bookmarks.Add(bookmark);
-                this.bookmarks.SaveChanges();
-
-                return Ok("bookmark added");
             }
-            return BadRequest("bookmark not added");
+
+            var userId = this.User.Identity.GetUserId();
+            var tags = Mapper.Map<IEnumerable<TagRequestModel>, IEnumerable<Tag>>(model.Tags);
+            var website = Mapper.Map<Website>(model.Website);
+
+            bookmarkService.Add(model.Title, model.Url, model.Description, model.SnapshotBase64String, tags, website, userId);
+
+            return Ok("bookmark added");
         }
     }
 }

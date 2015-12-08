@@ -10,12 +10,8 @@
 
         [MaxLength(ValidationConstants.MaxWebSiteName)]
         [MinLength(ValidationConstants.MinWebSiteName)]
-        public string Url { get; set; }
+        public string Name { get; set; }
 
         public string FaviconBase64String { get; set; }
-
-        //public byte[] FaviconContent { get; set; }
-
-        //public string FaviconType { get; set; }
     }
 }

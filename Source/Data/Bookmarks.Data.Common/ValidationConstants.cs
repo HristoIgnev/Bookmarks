@@ -8,6 +8,6 @@
 
         //WebSite
         public const int MaxWebSiteName = 50;
-        public const int MinWebSiteName = 4;
+        public const int MinWebSiteName = 1;
     }
 }

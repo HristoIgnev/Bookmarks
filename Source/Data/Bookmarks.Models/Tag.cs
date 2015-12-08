@@ -18,7 +18,9 @@ namespace Bookmarks.Data.Models
 
         [Required]
         public string Name { get; set; }
-        
+
+        public int UsedTimes { get; set; }
+
         public virtual ICollection<Bookmark> Bookmarks
         {
             get

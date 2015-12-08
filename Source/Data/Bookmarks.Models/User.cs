@@ -23,7 +23,7 @@
             // Add custom user claims here
             return userIdentity;
         }
-
+        
         public ICollection<Bookmark> Bookmarks
         {
             get { return bookmarks; }

@@ -7,8 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{E21C7A4E-A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{003FA1BD-7C0E-41BD-AB07-E1AD449096AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookmarks.Common", "Bookmarks.Common\Bookmarks.Common.csproj", "{DF2ACDEB-605E-4542-AD72-C580EB61151E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookmarks.Data", "Data\Bookmarks.Data\Bookmarks.Data.csproj", "{CC20B2A5-3474-4469-9C54-6639C42D15BE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookmarks.Data.Models", "Data\Bookmarks.Models\Bookmarks.Data.Models.csproj", "{FBAFD219-D5A5-4EF5-BB2B-2A28813681A1}"
@@ -16,10 +14,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookmarks.Web", "Web\Bookmarks.Web\Bookmarks.Web.csproj", "{4DB2BF05-4C17-45A5-BCD9-D9183DB3E088}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookmarks.Data.Common", "Data\Bookmarks.Data.Common\Bookmarks.Data.Common.csproj", "{0FB2AE56-F1B6-49B2-B66A-82141EC30002}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{1EAC5094-342E-4C13-8F88-B02BEDD49B9E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boookmarks.Services", "Boookmarks.Services\Boookmarks.Services.csproj", "{FC2FC26B-E2EE-4617-B1BB-14B0497952CE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookmarks.Web.Infrastructure", "Web\Bookmarks.Web.Infrastructure\Bookmarks.Web.Infrastructure.csproj", "{793FE3FA-2D7F-44C3-B788-231ED3F8BF56}"
 EndProject
@@ -29,10 +23,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DF2ACDEB-605E-4542-AD72-C580EB61151E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DF2ACDEB-605E-4542-AD72-C580EB61151E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DF2ACDEB-605E-4542-AD72-C580EB61151E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DF2ACDEB-605E-4542-AD72-C580EB61151E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CC20B2A5-3474-4469-9C54-6639C42D15BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CC20B2A5-3474-4469-9C54-6639C42D15BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC20B2A5-3474-4469-9C54-6639C42D15BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -49,10 +39,6 @@ Global
 		{0FB2AE56-F1B6-49B2-B66A-82141EC30002}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FB2AE56-F1B6-49B2-B66A-82141EC30002}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FB2AE56-F1B6-49B2-B66A-82141EC30002}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FC2FC26B-E2EE-4617-B1BB-14B0497952CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FC2FC26B-E2EE-4617-B1BB-14B0497952CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FC2FC26B-E2EE-4617-B1BB-14B0497952CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FC2FC26B-E2EE-4617-B1BB-14B0497952CE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{793FE3FA-2D7F-44C3-B788-231ED3F8BF56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{793FE3FA-2D7F-44C3-B788-231ED3F8BF56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{793FE3FA-2D7F-44C3-B788-231ED3F8BF56}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -66,7 +52,6 @@ Global
 		{FBAFD219-D5A5-4EF5-BB2B-2A28813681A1} = {E21C7A4E-A988-4F64-988A-43E3AFDDB68E}
 		{4DB2BF05-4C17-45A5-BCD9-D9183DB3E088} = {003FA1BD-7C0E-41BD-AB07-E1AD449096AD}
 		{0FB2AE56-F1B6-49B2-B66A-82141EC30002} = {E21C7A4E-A988-4F64-988A-43E3AFDDB68E}
-		{FC2FC26B-E2EE-4617-B1BB-14B0497952CE} = {1EAC5094-342E-4C13-8F88-B02BEDD49B9E}
 		{793FE3FA-2D7F-44C3-B788-231ED3F8BF56} = {003FA1BD-7C0E-41BD-AB07-E1AD449096AD}
 	EndGlobalSection
 EndGlobal

@@ -44,12 +44,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\EnumerableExtensions.cs" />
+    <Compile Include="InfrastructureConstants.cs" />
     <Compile Include="Mapping\IHaveCustomMappings.cs" />
     <Compile Include="Mapping\IMapFrom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Base\IService.cs" />
+    <Compile Include="Services\BookmarksService.cs" />
+    <Compile Include="Services\Contracts\IBookmarksService.cs" />
+    <Compile Include="Services\Contracts\IHomeService.cs" />
+    <Compile Include="Services\Contracts\ITagsService.cs" />
+    <Compile Include="Services\HomeService.cs" />
+    <Compile Include="Services\Contracts\IWebsiteService.cs" />
+    <Compile Include="Services\TagsService.cs" />
+    <Compile Include="Services\WebsiteService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\Bookmarks.Data.Common\Bookmarks.Data.Common.csproj">
+      <Project>{0fb2ae56-f1b6-49b2-b66a-82141ec30002}</Project>
+      <Name>Bookmarks.Data.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\Bookmarks.Models\Bookmarks.Data.Models.csproj">
+      <Project>{fbafd219-d5a5-4ef5-bb2b-2a28813681a1}</Project>
+      <Name>Bookmarks.Data.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

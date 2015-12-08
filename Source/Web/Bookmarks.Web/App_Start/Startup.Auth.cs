@@ -28,7 +28,7 @@ namespace Bookmarks.Web
             {
                
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                ExpireTimeSpan = TimeSpan.FromDays(30),
+                ExpireTimeSpan = TimeSpan.FromDays(999),
                 LoginPath = new PathString("/Account/Login"),
                 Provider = new CookieAuthenticationProvider
                 {
