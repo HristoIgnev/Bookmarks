@@ -1,0 +1,21 @@
+{
+  "name":"Bookmark manager",
+  "manifest_version": 2,
+  "version": "1",
+  "description":"Bookmarking tool",
+  "icons":{"48":"icons/48.png","128":"icons/128.png"},
+  "browser_action":{
+    "default_icon":"icons/48gray.png",
+    "default_title":"Bookmark this page",
+    "default_popup":"popup.html"
+  },
+  "permissions": [
+    "activeTab"
+  ],
+  "content_scripts":[
+    {
+      "matches":["http://*/*","https://*/*"],
+      "js":["js/jquery.min.js","js/content.js"]
+    }
+  ]
+}
