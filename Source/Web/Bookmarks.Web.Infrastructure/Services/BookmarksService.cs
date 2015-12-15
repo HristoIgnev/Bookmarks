@@ -19,8 +19,8 @@
             this.websiteService = websiteService;
         }
 
-        public void Add(string title,string url, string description, string snapshotBase64String, IEnumerable<Tag> tags, Website website, string userId)
-        {
+        public void Add(string title, string url, string description, string snapshotBase64String, IEnumerable<Tag> tags, Website website, string userId)
+        {     
             var bookmark = new Bookmark
             {
                 Description = description,
@@ -29,7 +29,7 @@
                 Url = url,
                 SnapshotBase64String = snapshotBase64String
 
-            };
+            };            
 
             //check for existing website 
             var existingWebsite = websiteService.GetWebsiteByName(website.Name).FirstOrDefault();
@@ -78,6 +78,18 @@
             }
 
             return null;
+        }
+
+        public IQueryable<Bookmark> All()
+        {
+            return bookmarks.All();
+        }
+        
+        public bool Exist(string url)
+        {
+            bool checkForUrl = bookmarks.All().Any(b => b.Url == url);
+
+            return checkForUrl;
         }
     }
 }

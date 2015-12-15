@@ -31,8 +31,12 @@
         {
             if (!ModelState.IsValid || model == null)
             {
-                return BadRequest("bookmark not added");
+                return BadRequest("Bookmark not added");
+            }
 
+            if (bookmarkService.Exist(model.Url))
+            {
+                return BadRequest("Bookmark already added");
             }
 
             var userId = this.User.Identity.GetUserId();

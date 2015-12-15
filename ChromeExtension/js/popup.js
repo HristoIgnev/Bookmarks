@@ -4,7 +4,7 @@ $(function(){
         tags;
 
     $('#logged').hide();
-     $.get("http://localhost:54617/api/extension", function (data) {
+     $.get("http://localhost:8080/api/extension", function (data) {
         if (data.Logged) {
             $('#notLogged').hide();
             $('#loggedAs').text( data.Name);
@@ -88,7 +88,7 @@ $(function(){
     function getTags(){
         tags=$('#mySingleField').val();
         var result = [];
-        if(tags != undefined){
+        if(tags != undefined && tags != ""){
             var arr = tags.split(",");
             for (var i = 0; i < arr.length; i++) {
                 var obj = {};
@@ -126,7 +126,7 @@ $(function(){
 
             $.ajax({
                 type: "POST",
-                url: "http://localhost:54617/api/bookmark",
+                url: "http://localhost:8080/api/bookmark",
                 data: JSON.stringify(data),
                 success: function(data){
                     $('#errorNotifier').hide();
@@ -134,7 +134,7 @@ $(function(){
                 },
                 error: function(data){
                     $('#successNotifier').hide();
-                    $('#errorNotifier').text(data).show();
+                    $('#errorNotifier').text(data.Message).show();
                 },
                 contentType : "application/json"
             });
@@ -168,8 +168,6 @@ $(function(){
         };
         img.src = url;
     }
-
-
 
     // Once the DOM is ready...
     window.addEventListener('DOMContentLoaded', function () {

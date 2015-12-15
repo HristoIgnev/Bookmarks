@@ -52,9 +52,7 @@
     <Compile Include="Services\Base\IService.cs" />
     <Compile Include="Services\BookmarksService.cs" />
     <Compile Include="Services\Contracts\IBookmarksService.cs" />
-    <Compile Include="Services\Contracts\IHomeService.cs" />
     <Compile Include="Services\Contracts\ITagsService.cs" />
-    <Compile Include="Services\HomeService.cs" />
     <Compile Include="Services\Contracts\IWebsiteService.cs" />
     <Compile Include="Services\TagsService.cs" />
     <Compile Include="Services\WebsiteService.cs" />

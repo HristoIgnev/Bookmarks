@@ -228,7 +228,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Constants\AssemblyConstants.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\BookmarkController.cs" />
+    <Compile Include="Controllers\BookmarksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -322,11 +322,12 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Bookmarks\Index.cshtml" />
+    <Content Include="Views\Shared\_BookmarkResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="ViewModels\Bookmark\" />
-    <Folder Include="Views\Bookmark\" />
+    <Folder Include="ViewModels\Bookmarks\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
