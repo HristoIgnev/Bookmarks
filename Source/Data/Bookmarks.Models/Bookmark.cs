@@ -2,12 +2,10 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-
-    using Common.Contracts;
+    
     using Common;
 
-    public class Bookmark : IDeletableEntity
+    public class Bookmark 
     {
         private ICollection<Tag> tags;
 
@@ -33,13 +31,6 @@
         public string Description { get; set; }
 
         public string SnapshotBase64String { get; set; }
-
-        //public byte[] SnapshotContent { get; set; }
-
-        //public string SnapshotType { get; set; }
-
-        [Index]
-        public bool IsDeleted { get; set; }
 
         public string UserId { get; set; }
 

@@ -248,6 +248,7 @@
     <Compile Include="RequestModels\BookmarkRequestModel.cs" />
     <Compile Include="RequestModels\TagRequestModel.cs" />
     <Compile Include="RequestModels\WebSiteRequestModel.cs" />
+    <Compile Include="ViewModels\Bookmarks\ThumbnailBookmarkViewModel.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Manage\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\ConfigureTwoFactorViewModel.cs" />
@@ -327,7 +328,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="ViewModels\Bookmarks\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

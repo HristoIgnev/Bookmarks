@@ -1,1 +1,41 @@
-﻿
+﻿@using Bookmarks.Web.ViewModels.Bookmarks
+@model IEnumerable<ThumbnailBookmarkViewModel>
+<div id="bm-tiles">
+    @{
+        int counter = 0;
+        foreach (var bookmark in Model)
+        {
+            if (counter == 0)
+            {
+                @:<div class="row">
+            }
+            else if (counter > 0 && counter % 12 == 0)
+            {
+                @:</div>
+                counter = 0;
+            }
+                <div class="col-md-4">
+                    <a class="bm-tile bm-a" href="@bookmark.Url" title="@bookmark.Title" target="_blank">
+                        <div class="bm-favicon">
+                            <img src="@bookmark.FaviconBase64String" />
+                        </div>
+                        <div class="bm-title">
+                            @bookmark.Title
+                        </div>
+                        <div class="bm-thumb">
+                            <img class="thumbnail" src="@bookmark.SnapshotBase64String" />
+                        </div>
+                    </a>
+                    @Ajax.ActionLink("Details", "BookmarkById", "Bookmarks", new { id = bookmark.Id },
+                        new AjaxOptions
+                        {
+                            InsertionMode = InsertionMode.Replace,
+                            UpdateTargetId = "bookmark-content"
+                        })
+                </div>
+            
+
+        }
+    }
+</div>
+<div id="book-content"></div>

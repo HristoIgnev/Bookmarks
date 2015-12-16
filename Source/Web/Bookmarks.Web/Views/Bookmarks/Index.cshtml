@@ -1,3 +1,7 @@
-﻿
+﻿@using Bookmarks.Web.ViewModels.Bookmarks
+@model IEnumerable<ThumbnailBookmarkViewModel>
 <h2>Great</h2>
 
+<div id="results">
+    @Html.Partial("_BookmarkResult", Model)
+</div>

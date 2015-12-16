@@ -39,10 +39,10 @@
                 return BadRequest("Bookmark already added");
             }
 
-            var userId = this.User.Identity.GetUserId();
+            var userId = this.User.Identity.GetUserId();            
             var tags = Mapper.Map<IEnumerable<TagRequestModel>, IEnumerable<Tag>>(model.Tags);
             var website = Mapper.Map<Website>(model.Website);
-
+            
             bookmarkService.Add(model.Title, model.Url, model.Description, model.SnapshotBase64String, tags, website, userId);
 
             return Ok("bookmark added");
