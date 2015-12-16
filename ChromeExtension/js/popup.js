@@ -43,10 +43,10 @@ $(function(){
 
     function getWebsiteName(str){
         var arr = str.split(".");
-        if(arr.length == 2){
-            return arr[0];
+        if(arr.length == 3){
+            return arr[1] + '.' + arr[2];
         }
-        return arr[1];
+        return str;
     }
     // Update the relevant fields with the new data
     function setInputsInfo(data) {
