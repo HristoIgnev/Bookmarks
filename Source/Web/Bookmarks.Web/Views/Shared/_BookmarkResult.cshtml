@@ -9,33 +9,26 @@
             {
                 @:<div class="row">
             }
-            else if (counter > 0 && counter % 12 == 0)
+            else if (counter > 0 && counter % 3 == 0)
             {
-                @:</div>
+                @:</div><div class="row">
                 counter = 0;
             }
-                <div class="col-md-4">
-                    <a class="bm-tile bm-a" href="@bookmark.Url" title="@bookmark.Title" target="_blank">
-                        <div class="bm-favicon">
-                            <img src="@bookmark.FaviconBase64String" />
-                        </div>
-                        <div class="bm-title">
-                            @bookmark.Title
-                        </div>
-                        <div class="bm-thumb">
-                            <img class="thumbnail" src="@bookmark.SnapshotBase64String" />
-                        </div>
-                    </a>
-                    @Ajax.ActionLink("Details", "BookmarkById", "Bookmarks", new { id = bookmark.Id },
-                        new AjaxOptions
-                        {
-                            InsertionMode = InsertionMode.Replace,
-                            UpdateTargetId = "bookmark-content"
-                        })
-                </div>
-            
-
+            <div class="col-md-4">
+                <a class="bm-tile bm-a" href="@bookmark.Url" title="@bookmark.Title" target="_blank">
+                    <div class="bm-favicon">
+                        <img src="@bookmark.FaviconBase64String" />
+                    </div>
+                    <div class="bm-title">
+                        @bookmark.Title
+                    </div>
+                    <div class="bm-thumb">
+                        <img class="thumbnail" src="@bookmark.SnapshotBase64String" />
+                    </div>
+                </a>
+            </div>
+            counter += 1;
         }
+        @:</div>
     }
 </div>
-<div id="book-content"></div>

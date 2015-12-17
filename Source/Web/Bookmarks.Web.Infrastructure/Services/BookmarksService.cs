@@ -5,6 +5,7 @@
     using Contracts;
     using System.Linq;
     using System.Collections.Generic;
+    using System;
 
     public class BookmarksService : IBookmarksService
     {
@@ -90,6 +91,16 @@
             bool checkForUrl = bookmarks.All().Any(b => b.Url == url);
 
             return checkForUrl;
+        }
+
+        public IQueryable<Bookmark> Search(string query)
+        {
+            if(query == String.Empty)
+            {
+                return bookmarks.All();
+            }
+            return bookmarks.All()
+                .Where(b => b.Title.ToLower().Contains(query.ToLower()));
         }
     }
 }

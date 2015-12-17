@@ -27,5 +27,11 @@
         {
             return View();
         }
+        public ActionResult Search(string query)
+        {
+            var result = bookmarks.Search(query).ProjectTo<ThumbnailBookmarkViewModel>().ToList();
+               
+            return this.PartialView("_BookmarkResult", result);
+        }
     }
 }

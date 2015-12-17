@@ -14,5 +14,7 @@
         bool Exist(string url);
 
         IQueryable<Bookmark> GetAllByTagName(string tagName);
+
+        IQueryable<Bookmark> Search(string query);
     }
 }

@@ -1,7 +1,35 @@
 ﻿@using Bookmarks.Web.ViewModels.Bookmarks
 @model IEnumerable<ThumbnailBookmarkViewModel>
 <h2>Great</h2>
+<div class="row">
+    <p class="col-md-1">Search: </p>
+    @using (Ajax.BeginForm("Search", null,
+                        new AjaxOptions
+                        {
+                            UpdateTargetId = "results",
+                            InsertionMode = InsertionMode.Replace,
+                            HttpMethod = "POST"
+                        },
+                        new { id = "searchForm",
+                            @class ="col-md-3",
+                            autocomplete = "off"
+                        }))
+    {
+        <input type="text" name="query" oninput="changed()" />
+    }
+</div>
+
 
 <div id="results">
-    @Html.Partial("_BookmarkResult", Model)
+   @Html.Partial("_BookmarkResult", Model)
 </div>
+
+@section scripts{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+    <script>
+    function changed() {
+        $("#searchForm").submit();
+    }
+    </script>
+}
