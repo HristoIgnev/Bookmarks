@@ -51,7 +51,7 @@
             
             foreach (var tag in tags)
             {
-                var currentTag = tagService.GetTagByName(tag.Name).FirstOrDefault();
+                var currentTag = tagService.GetTagByName(tag.Name, userId).FirstOrDefault();
                 if (currentTag != null)
                 {
                     currentTag.UsedTimes++;
@@ -69,37 +69,31 @@
             this.bookmarks.SaveChanges();
         }
 
-        public IQueryable<Bookmark> GetAllByTagName(string tagName)
+        public IQueryable<Bookmark> GetBookmarksByTagName(string tagName, string userId)
         {
-            var tag = tagService.GetTagByName(tagName).FirstOrDefault();
-
-            if(tag != null)
-            {
-                return bookmarks.All().Where(b => tag.Name == tagName);
-            }
-
-            return null;
+            var bookmarksByTagName = AllBookmarksByUserId(userId).Where(b => b.Tags.Any(x => x.Name == tagName));
+            return bookmarksByTagName;
         }
 
-        public IQueryable<Bookmark> All()
+        public IQueryable<Bookmark> AllBookmarksByUserId(string userId)
         {
-            return bookmarks.All();
+            return bookmarks.All().Where(b=>b.UserId == userId);
         }
-        
-        public bool Exist(string url)
+
+        public bool Exist(string url, string userId)
         {
-            bool checkForUrl = bookmarks.All().Any(b => b.Url == url);
+            bool checkForUrl = AllBookmarksByUserId(userId).Any(b => b.Url == url);
 
             return checkForUrl;
         }
 
-        public IQueryable<Bookmark> Search(string query)
+        public IQueryable<Bookmark> Search(string query, string userId)
         {
             if(query == String.Empty)
             {
-                return bookmarks.All();
+                return AllBookmarksByUserId(userId);
             }
-            return bookmarks.All()
+            return AllBookmarksByUserId(userId)
                 .Where(b => b.Title.ToLower().Contains(query.ToLower()));
         }
     }

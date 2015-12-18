@@ -1,14 +1,12 @@
 ﻿namespace Bookmarks.Web.Controllers
 {
-    using System;
     using System.Linq;
     using System.Web.Mvc;
 
     using Infrastructure.Services.Contracts;
     using AutoMapper.QueryableExtensions;
     using ViewModels.Bookmarks;
-    using Data.Models;
-    using System.Collections.Generic;
+    using Microsoft.AspNet.Identity;
 
     public class BookmarksController : Controller
     {
@@ -19,7 +17,7 @@
         }
         public ActionResult Index()
         {
-            var allBookmarks = bookmarks.All().ProjectTo<ThumbnailBookmarkViewModel>().ToList();
+            var allBookmarks = bookmarks.AllBookmarksByUserId(this.User.Identity.GetUserId()).ProjectTo<ThumbnailBookmarkViewModel>().ToList();
             return View(allBookmarks);
         }
 
@@ -27,9 +25,19 @@
         {
             return View();
         }
+        
+        public ActionResult AllWithTag(string tagName)
+        {
+            var userId = this.User.Identity.GetUserId();
+            var result = bookmarks.GetBookmarksByTagName(tagName, userId).ProjectTo<ThumbnailBookmarkViewModel>().ToList(); 
+               
+            return View(result);
+        }
+
         public ActionResult Search(string query)
         {
-            var result = bookmarks.Search(query).ProjectTo<ThumbnailBookmarkViewModel>().ToList();
+            var userId = this.User.Identity.GetUserId();
+            var result = bookmarks.Search(query, userId).ProjectTo<ThumbnailBookmarkViewModel>().ToList();
                
             return this.PartialView("_BookmarkResult", result);
         }

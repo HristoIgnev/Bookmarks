@@ -9,12 +9,13 @@
     {
         void Add(string title, string url, string description, string snapshotBase64String, IEnumerable<Tag> tags, Website website, string userId);
 
-        IQueryable<Bookmark> All();
+        IQueryable<Bookmark> AllBookmarksByUserId(string userId);
 
-        bool Exist(string url);
+        bool Exist(string url, string userId);
 
-        IQueryable<Bookmark> GetAllByTagName(string tagName);
+        IQueryable<Bookmark> GetBookmarksByTagName(string tagName, string userId);
 
-        IQueryable<Bookmark> Search(string query);
+        IQueryable<Bookmark> Search(string query, string userId);
+        
     }
 }

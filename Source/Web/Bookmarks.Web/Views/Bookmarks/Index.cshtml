@@ -1,8 +1,7 @@
 ﻿@using Bookmarks.Web.ViewModels.Bookmarks
 @model IEnumerable<ThumbnailBookmarkViewModel>
-<h2>Great</h2>
 <div class="row">
-    <p class="col-md-1">Search: </p>
+    <p class="col-md-1"><strong>Search:</strong> </p>
     @using (Ajax.BeginForm("Search", null,
                         new AjaxOptions
                         {

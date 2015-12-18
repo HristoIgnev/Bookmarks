@@ -6,8 +6,10 @@
 
     public interface ITagsService : IService
     {
-        int GetIdByName(string name);
+        IQueryable<Tag> GetTagByName(string name, string userIds);
 
-        IQueryable<Tag> GetTagByName(string name);
+        IQueryable<Tag> AllTagsByUser(string userId);
+
+        int GetIdByName(string name);
     }
 }

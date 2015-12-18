@@ -3,13 +3,10 @@
     using System.Web.Http;
     using System.Web.Http.Cors;
     using Microsoft.AspNet.Identity;
-    using System.Linq;
 
     using AutoMapper;
-    using AutoMapper.QueryableExtensions;
 
     using Data.Models;
-    using Data.Common.Contracts;
 
     using RequestModels;
     using Infrastructure.Services.Contracts;
@@ -29,17 +26,18 @@
         [Authorize]
         public IHttpActionResult CreateBookmark(BookmarkRequestModel model)
         {
+            var userId = this.User.Identity.GetUserId();
+
             if (!ModelState.IsValid || model == null)
             {
                 return BadRequest("Bookmark not added");
             }
-
-            if (bookmarkService.Exist(model.Url))
+            
+            if (bookmarkService.Exist(model.Url, userId))
             {
                 return BadRequest("Bookmark already added");
             }
-
-            var userId = this.User.Identity.GetUserId();            
+          
             var tags = Mapper.Map<IEnumerable<TagRequestModel>, IEnumerable<Tag>>(model.Tags);
             var website = Mapper.Map<Website>(model.Website);
             

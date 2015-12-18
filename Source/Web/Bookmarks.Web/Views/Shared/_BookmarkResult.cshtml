@@ -9,23 +9,32 @@
             {
                 @:<div class="row">
             }
-            else if (counter > 0 && counter % 3 == 0)
+            else if (counter > 0 && counter % 6 == 0)
             {
                 @:</div><div class="row">
                 counter = 0;
             }
-            <div class="col-md-4">
-                <a class="bm-tile bm-a" href="@bookmark.Url" title="@bookmark.Title" target="_blank">
-                    <div class="bm-favicon">
-                        <img src="@bookmark.FaviconBase64String" />
+            <div class="col-md-2">
+                <a class="thumbnail" href="@bookmark.Url" title="@bookmark.Title" target="_blank">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <img src="@bookmark.FaviconBase64String" />
+                        </div>
+                        <div class="col-xs-9 text-center bm-thumb-title">
+                            @bookmark.Title
+                        </div>
                     </div>
-                    <div class="bm-title">
-                        @bookmark.Title
-                    </div>
-                    <div class="bm-thumb">
-                        <img class="thumbnail" src="@bookmark.SnapshotBase64String" />
-                    </div>
+                    <div class="row">
+                        <div class="crop col-xs-12">
+                            <img class="img-responsive" src="@bookmark.SnapshotBase64String" />
+                        </div>
+                    </div>                                                      
                 </a>
+                <div class="row details">
+                    <div class="col-xs-4">
+                        @Html.ActionLink("Details", "Details", "Bookmarks", new { id = bookmark.Id }, null)
+                    </div>
+                </div>     
             </div>
             counter += 1;
         }

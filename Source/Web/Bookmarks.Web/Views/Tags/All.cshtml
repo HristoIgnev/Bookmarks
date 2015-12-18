@@ -1,0 +1,11 @@
+﻿@using Bookmarks.Web.ViewModels.Tags
+@model IEnumerable<TagsViewModel>
+
+@foreach (var tag in Model)
+{
+    <button class="btn btn-primary" type="button">
+        @Html.ActionLink(@tag.Name, "AllWithTag","Bookmarks",new {tagName = @tag.Name },new { @class = "asd"})
+          <span class="badge">@tag.UsedTimes</span>
+    </button>
+}
+

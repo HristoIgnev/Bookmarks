@@ -72,7 +72,7 @@ $(function(){
             fieldname = fields[i];
             fieldVal = $("#" +fieldname).val();
 
-            if(/^[\u0430-\u044fa-zA-Z0-9- ,.:|/#()_]*$/gmi.test(fieldVal) == false) {
+            if(/^[\u0430-\u044fa-zA-Z0-9- ,.-:·?=|/#()%_]*$/gmi.test(fieldVal) == false) {
                 $('#errorNotifier').text(fieldname.substring(5) +" contains invalid characters like '<,>,$,@...'");
                 return false;
             }
