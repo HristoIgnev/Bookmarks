@@ -3,10 +3,10 @@
     using System;
     using System.Data.Entity;
     using System.Linq;
+    using System.Linq.Expressions;
     using System.Threading.Tasks;
-    
-    using Contracts;
 
+    using Contracts;
     public class EfGenericRepository<T> : IRepository<T> where T : class
     {
         public EfGenericRepository(DbContext context)
@@ -92,6 +92,12 @@
             var entry = this.Context.Entry(entity);
             entry.State = EntityState.Detached;
         }
+
+        public IQueryable<T> Include<TProparty>(Expression<Func<T, TProparty>> conditions)
+        {
+            return this.All().Include(conditions);
+        }
+
 
         public int SaveChanges()
         {

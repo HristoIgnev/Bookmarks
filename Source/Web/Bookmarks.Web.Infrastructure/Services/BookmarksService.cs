@@ -54,13 +54,11 @@
                 var currentTag = tagService.GetTagByName(tag.Name, userId).FirstOrDefault();
                 if (currentTag != null)
                 {
-                    currentTag.UsedTimes++;
                     bookmark.Tags.Add(currentTag);
                 }
                 else
                 {
                     var tagToAdd = new Tag { Name = tag.Name };
-                    tagToAdd.UsedTimes = InfrastructureConstants.TagUsedTimesDefautValue;
                     bookmark.Tags.Add(tagToAdd);
                 }
             }

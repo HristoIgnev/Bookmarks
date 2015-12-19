@@ -7,7 +7,7 @@
     using AutoMapper.QueryableExtensions;
     using ViewModels.Bookmarks;
     using Microsoft.AspNet.Identity;
-
+    using System.Web.Routing;
     public class BookmarksController : Controller
     {
         private IBookmarksService bookmarks;
@@ -29,9 +29,9 @@
         public ActionResult AllWithTag(string tagName)
         {
             var userId = this.User.Identity.GetUserId();
-            var result = bookmarks.GetBookmarksByTagName(tagName, userId).ProjectTo<ThumbnailBookmarkViewModel>().ToList(); 
-               
-            return View(result);
+            var result = bookmarks.GetBookmarksByTagName(tagName, userId).ProjectTo<ThumbnailBookmarkViewModel>().ToList();
+
+            return View("Index", result);
         }
 
         public ActionResult Search(string query)

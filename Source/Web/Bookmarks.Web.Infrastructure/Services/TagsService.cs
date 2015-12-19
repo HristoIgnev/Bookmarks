@@ -20,7 +20,7 @@
 
         public IQueryable<Tag> AllTagsByUser(string userId)
         {
-            var allTags = bookmarks.All().Where(b=>b.UserId == userId).SelectMany(x=>x.Tags);
+            var allTags= bookmarks.All().Where(b=>b.UserId == userId).SelectMany(x=>x.Tags).Distinct();
             return allTags;
         }
 
