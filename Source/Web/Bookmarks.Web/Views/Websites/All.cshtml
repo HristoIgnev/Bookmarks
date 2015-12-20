@@ -1,0 +1,16 @@
+﻿@using Bookmarks.Web.ViewModels.Websites
+@model IEnumerable<WebsiteViewModel>
+
+<ul class="nav nav-pills" role="tablist">
+    @foreach (var website in Model)
+    {
+        <li role="presentation">
+            <a href="/Bookmarks/ByWebsite?name=@website.Name">
+                @website.Name
+                <span class="badge">
+                    @website.UsedTimes
+                </span>
+            </a>
+        </li>
+    }
+</ul>

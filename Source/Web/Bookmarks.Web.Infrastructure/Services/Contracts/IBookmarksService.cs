@@ -15,7 +15,9 @@
 
         IQueryable<Bookmark> GetBookmarksByTagName(string tagName, string userId);
 
-        IQueryable<Bookmark> Search(string query, string userId);
+        IQueryable<Bookmark> GetBookmarksByWebsiteName(string websiteName, string userId);
+
+        IQueryable<Bookmark> Search(BookmarksFilters query, string userId);
         
     }
 }

@@ -5,6 +5,8 @@
     using Contracts;
     using System.Linq;
     using System.Collections.Generic;
+
+    using Extensions;
     using System;
 
     public class BookmarksService : IBookmarksService
@@ -33,7 +35,7 @@
             };            
 
             //check for existing website 
-            var existingWebsite = websiteService.GetWebsiteByName(website.Name).FirstOrDefault();
+            var existingWebsite = websiteService.GetWebsiteByName(website.Name, userId).FirstOrDefault();
             if (existingWebsite != null)
             {
                 bookmark.WebSite = existingWebsite;
@@ -58,7 +60,7 @@
                 }
                 else
                 {
-                    var tagToAdd = new Tag { Name = tag.Name };
+                    var tagToAdd = new Tag { Name = tag.Name.ToLower() };
                     bookmark.Tags.Add(tagToAdd);
                 }
             }
@@ -71,6 +73,11 @@
         {
             var bookmarksByTagName = AllBookmarksByUserId(userId).Where(b => b.Tags.Any(x => x.Name == tagName));
             return bookmarksByTagName;
+        }
+        public IQueryable<Bookmark> GetBookmarksByWebsiteName(string websiteName, string userId)
+        {
+            var bookmarksByWebsiteName = AllBookmarksByUserId(userId).Where(b => b.WebSite.Name == websiteName);
+            return bookmarksByWebsiteName;
         }
 
         public IQueryable<Bookmark> AllBookmarksByUserId(string userId)
@@ -85,14 +92,13 @@
             return checkForUrl;
         }
 
-        public IQueryable<Bookmark> Search(string query, string userId)
+        public IQueryable<Bookmark> Search(BookmarksFilters filters, string userId)
         {
-            if(query == String.Empty)
+            if (filters == null)
             {
                 return AllBookmarksByUserId(userId);
             }
-            return AllBookmarksByUserId(userId)
-                .Where(b => b.Title.ToLower().Contains(query.ToLower()));
+            return AllBookmarksByUserId(userId).ToFilteredBookmarks(filters);
         }
     }
 }

@@ -9,7 +9,5 @@
         IQueryable<Tag> GetTagByName(string name, string userIds);
 
         IQueryable<Tag> AllTagsByUser(string userId);
-
-        int GetIdByName(string name);
     }
 }

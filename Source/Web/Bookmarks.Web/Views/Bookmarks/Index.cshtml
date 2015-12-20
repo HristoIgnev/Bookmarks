@@ -3,7 +3,12 @@
 <div class="row">
     <p class="col-md-1"><strong>Search:</strong> </p>
 
-    @using (Ajax.BeginForm("Search", new { data = ViewContext.RouteData },
+    @using (Ajax.BeginForm("Search",
+                new
+                {
+                    TagName = TempData["TagName"],
+                    WebsiteName = TempData["WebsiteName"]
+                },
                 new AjaxOptions
                 {
                     UpdateTargetId = "results",
@@ -17,7 +22,7 @@
                     autocomplete = "off"
                 }))
     {
-        <input type="text" name="query" oninput="changed()" />
+        <input type="text" name="Title" oninput="changed()" />
     }
 </div>
 
@@ -28,7 +33,7 @@
 
 @section scripts{
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-
+    <script src="~/Scripts/custom.js"></script>
     <script>
         function changed() {
             $("#searchForm").submit();

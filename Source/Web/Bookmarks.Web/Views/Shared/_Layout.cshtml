@@ -25,6 +25,7 @@
                     @if (Context.User.Identity.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Tags","All","Tags")</li>
+                        <li>@Html.ActionLink("Websites", "All", "Websites")</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

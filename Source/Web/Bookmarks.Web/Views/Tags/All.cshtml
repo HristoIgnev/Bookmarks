@@ -1,11 +1,28 @@
 ﻿@using Bookmarks.Web.ViewModels.Tags
 @model IEnumerable<TagsViewModel>
 
-@foreach (var tag in Model)
-{
-    <button class="btn btn-primary" type="button">
-        @Html.ActionLink(@tag.Name, "AllWithTag","Bookmarks",new {tagName = @tag.Name },new { @class = "asd"})
-          <span class="badge">@tag.UsedTimes</span>
-    </button>
-}
-
+<ul class="nav nav-pills" role="tablist">
+    @{
+        char nextChar = '{';
+        foreach (var tag in Model)
+        {
+            char currentChar = tag.Name[0];
+            if (currentChar != nextChar)
+            {
+                <br/><br />
+                <div class="row">
+                    <li><strong class="text-uppercase">@currentChar</strong><hr class="delimater" /></li>
+                </div>
+                nextChar = currentChar;
+            }
+            <li role="presentation">
+                <a href="/Bookmarks/ByTag?name=@tag.Name">
+                    @tag.Name
+                    <span class="badge">
+                        @tag.UsedTimes
+                    </span>
+                </a>
+            </li>
+        }
+    }
+</ul>

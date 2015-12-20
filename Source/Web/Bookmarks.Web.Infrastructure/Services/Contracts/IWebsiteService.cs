@@ -7,8 +7,8 @@
     
     public interface IWebsiteService : IService
     {
-        int GetIdByName(string name);
+        IQueryable<Website> GetWebsiteByName(string name, string userId);
 
-        IQueryable<Website> GetWebsiteByName(string name);
+        IQueryable<Website> AllWebsitesByUser(string userId);
     }
 }

@@ -7,7 +7,9 @@
     using AutoMapper.QueryableExtensions;
     using ViewModels.Bookmarks;
     using Microsoft.AspNet.Identity;
-    using System.Web.Routing;
+    using System.Web.Http;
+
+    using Infrastructure;
     public class BookmarksController : Controller
     {
         private IBookmarksService bookmarks;
@@ -26,15 +28,25 @@
             return View();
         }
         
-        public ActionResult AllWithTag(string tagName)
+        public ActionResult ByTag(string name)
         {
             var userId = this.User.Identity.GetUserId();
-            var result = bookmarks.GetBookmarksByTagName(tagName, userId).ProjectTo<ThumbnailBookmarkViewModel>().ToList();
+            var result = bookmarks.GetBookmarksByTagName(name, userId).ProjectTo<ThumbnailBookmarkViewModel>().ToList();
+
+            TempData["TagName"] = name;
 
             return View("Index", result);
         }
+        public ActionResult ByWebsite(string name)
+        {
+            var userId = this.User.Identity.GetUserId();
+            var result = bookmarks.GetBookmarksByWebsiteName(name, userId).ProjectTo<ThumbnailBookmarkViewModel>().ToList();
 
-        public ActionResult Search(string query)
+            TempData["WebsiteName"] = name;
+
+            return View("Index", result);
+        }
+        public ActionResult Search([FromUri]BookmarksFilters query)
         {
             var userId = this.User.Identity.GetUserId();
             var result = bookmarks.Search(query, userId).ProjectTo<ThumbnailBookmarkViewModel>().ToList();

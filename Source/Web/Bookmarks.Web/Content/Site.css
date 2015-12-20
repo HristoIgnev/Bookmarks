@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color:darkgoldenrod;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -12,7 +13,7 @@
 .crop {
     overflow: hidden;
     display: block;
-    height: 130px;
+    height: 120px;
 }
 
 .bm-thumb-title {
@@ -22,8 +23,15 @@
 }
 .details{
     margin-top: -20px;
+    margin-bottom: 20px;
 }
 .asd{
 
     color:white;
+}
+.delimater{
+    margin:5px 0;
+    border-width:2px 0;
+    border-color:black;
+    color:black;
 }
