@@ -32,7 +32,7 @@
                 </a>
                 <div class="row details">
                     <div class="col-xs-6 text-center">
-                        @Html.ActionLink("Details", "Details", "Bookmarks", new { id = bookmark.Id }, null)
+                        @Html.ActionLink("Details", "Details", "Bookmarks", new { title = bookmark.Title }, null)
                     </div>
                      <div class="col-xs-6 text-center">
                         @Html.ActionLink("Remove", "Remove", "Bookmarks", new { id = bookmark.Id }, null)

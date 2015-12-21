@@ -1,16 +1,14 @@
-﻿using Bookmarks.Web.Infrastructure.Services.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Bookmarks.Web.ViewModels.Websites;
-using AutoMapper.QueryableExtensions;
-
-namespace Bookmarks.Web.Controllers
+﻿namespace Bookmarks.Web.Controllers
 {
-    public class WebsitesController : Controller
+    using System.Linq;
+    using System.Web.Mvc;
+
+    using AutoMapper.QueryableExtensions;
+
+    using Bookmarks.Web.ViewModels.Websites;
+    using Bookmarks.Web.Infrastructure.Services.Contracts;
+
+    public class WebsitesController : BaseController
     {
         private IWebsiteService websites;
         public WebsitesController(IWebsiteService websites)
@@ -18,9 +16,11 @@ namespace Bookmarks.Web.Controllers
             this.websites = websites;
         }
 
+        [HttpGet]
+        [Authorize]
         public ActionResult All()
         {
-            var allWebsites = websites.AllWebsitesByUser(User.Identity.GetUserId()).ProjectTo<WebsiteViewModel>().ToList();
+            var allWebsites = websites.AllWebsitesByUser(this.UserId).ProjectTo<WebsiteViewModel>().ToList();
             return View(allWebsites);
         }
     }

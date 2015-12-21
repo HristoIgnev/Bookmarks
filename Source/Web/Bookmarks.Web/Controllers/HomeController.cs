@@ -1,15 +1,12 @@
 ﻿namespace Bookmarks.Web.Controllers
 {
     using System.Web.Mvc;
-    using Microsoft.AspNet.Identity;
 
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
-            var userId = this.User.Identity.GetUserId();
-
-            if(userId != null)
+            if(this.UserId != null)
             {
                 return RedirectToAction("Index", "Bookmarks");
             }

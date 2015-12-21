@@ -92,6 +92,11 @@
             return checkForUrl;
         }
 
+        public IQueryable<Bookmark> GetBookmarksByName(string bookmarkTitle, string userId)
+        {
+            return AllBookmarksByUserId(userId).Where(b => b.Title == bookmarkTitle);
+        }
+
         public IQueryable<Bookmark> Search(BookmarksFilters filters, string userId)
         {
             if (filters == null)

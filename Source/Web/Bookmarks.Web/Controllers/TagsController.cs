@@ -7,9 +7,8 @@
 
     using Bookmarks.Web.Infrastructure.Services.Contracts;
     using ViewModels.Tags;
-    using Microsoft.AspNet.Identity;
 
-    public class TagsController : Controller
+    public class TagsController : BaseController
     {
         private ITagsService tags;
         public TagsController(ITagsService tags)
@@ -17,9 +16,11 @@
             this.tags = tags;
         }
 
+        [HttpGet]
+        [Authorize]
         public ActionResult All()
         {
-            var allTags = tags.AllTagsByUser(User.Identity.GetUserId()).ProjectTo<TagsViewModel>().ToList();
+            var allTags = tags.AllTagsByUser(this.UserId).ProjectTo<TagsViewModel>().ToList();
             return View(allTags);
         }
     }

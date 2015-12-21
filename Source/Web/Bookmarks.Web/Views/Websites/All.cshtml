@@ -5,8 +5,8 @@
     @foreach (var website in Model)
     {
         <li role="presentation">
-            <a href="/Bookmarks/ByWebsite?name=@website.Name">
-                @website.Name
+            <a href="/Bookmarks/ByWebsite?name=@website.Name">                
+                <img src="@website.FaviconBase64String"/>&nbsp;@website.Name
                 <span class="badge">
                     @website.UsedTimes
                 </span>

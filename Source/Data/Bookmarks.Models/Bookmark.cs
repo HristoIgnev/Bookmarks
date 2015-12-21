@@ -2,9 +2,9 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    
-    using Common;
 
+    using Common;
+    using System.ComponentModel.DataAnnotations.Schema;
     public class Bookmark 
     {
         private ICollection<Tag> tags;
@@ -17,6 +17,7 @@
         [Key]
         public int Id { get; set; }
 
+        [Index]
         [Required]
         [MaxLength(ValidationConstants.MaxBookmarkDescriptionLength)]
         public string Title { get; set; }

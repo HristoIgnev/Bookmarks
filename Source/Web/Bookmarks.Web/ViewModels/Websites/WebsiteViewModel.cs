@@ -10,9 +10,10 @@
 
         public int UsedTimes { get; set; }
 
+        public string FaviconBase64String { get; set; }
+
         public void CreateMappings(IConfiguration configuration)
         {
-
             configuration.CreateMap<Website, WebsiteViewModel>()
                 .ForMember(w => w.UsedTimes, opt => opt.MapFrom(w => w.Bookmarks.Count));
         }

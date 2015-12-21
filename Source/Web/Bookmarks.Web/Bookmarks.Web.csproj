@@ -228,6 +228,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Constants\AssemblyConstants.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BookmarksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -250,6 +251,7 @@
     <Compile Include="RequestModels\BookmarkRequestModel.cs" />
     <Compile Include="RequestModels\TagRequestModel.cs" />
     <Compile Include="RequestModels\WebSiteRequestModel.cs" />
+    <Compile Include="ViewModels\Bookmarks\BookmarkDetailViewModel.cs" />
     <Compile Include="ViewModels\Bookmarks\ThumbnailBookmarkViewModel.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Manage\ChangePasswordViewModel.cs" />
@@ -334,9 +336,11 @@
     <Content Include="Views\Shared\_BookmarkResult.cshtml" />
     <Content Include="Views\Tags\All.cshtml" />
     <Content Include="Views\Websites\All.cshtml" />
+    <Content Include="Views\Bookmarks\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -1,0 +1,52 @@
+﻿@using Bookmarks.Web.ViewModels.Bookmarks
+@model BookmarkDetailViewModel
+<div class="container detailsContainer">
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="@Model.SnapshotBase64String" />
+        </div>
+
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-xs-3 text-center">
+                    <strong>Website:</strong>
+                </div>
+                <div class="col-xs-9">
+                    <img src="@Model.WebSite.FaviconBase64String" />&nbsp;
+                    @Model.WebSite.Name
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3 text-center ">
+                    <strong>Title:</strong>
+                </div>
+                <div class="col-xs-9 bm-thumb-title">
+                    @Model.Title
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3 text-center">
+                    <strong>Url:</strong>
+                </div>
+                <div class="col-xs-9">
+                    <a href="@Model.Url" target="_blank">@Model.Url</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3 text-center">
+                    <strong>Description:</strong>
+                </div>
+                <div class="col-xs-9">
+                    @if (string.IsNullOrWhiteSpace(Model.Description))
+                    {
+                        @:No description
+                    }
+                    else
+                    {
+                        @Model.Description
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

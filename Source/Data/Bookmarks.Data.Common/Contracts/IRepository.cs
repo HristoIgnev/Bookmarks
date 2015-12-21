@@ -2,6 +2,7 @@
 {
     using System;
     using System.Linq;
+    using System.Linq.Expressions;
     using System.Threading.Tasks;
 
     public interface IRepository<T> : IDisposable where T : class
@@ -23,6 +24,8 @@
         void Detach(T entity);
 
         int SaveChanges();
+
+        IQueryable<T> Include<TProparty>(Expression<Func<T, TProparty>> conditions);
 
         Task<int> SaveChangesAsync();
     }

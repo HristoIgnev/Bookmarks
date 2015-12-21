@@ -12,6 +12,8 @@
         IQueryable<Bookmark> AllBookmarksByUserId(string userId);
 
         bool Exist(string url, string userId);
+        
+        IQueryable<Bookmark> GetBookmarksByName(string bookmarkTitle, string userId);
 
         IQueryable<Bookmark> GetBookmarksByTagName(string tagName, string userId);
 

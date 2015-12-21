@@ -7,50 +7,69 @@
     using AutoMapper.QueryableExtensions;
     using ViewModels.Bookmarks;
     using Microsoft.AspNet.Identity;
-    using System.Web.Http;
 
     using Infrastructure;
-    public class BookmarksController : Controller
+    public class BookmarksController : BaseController
     {
         private IBookmarksService bookmarks;
         public BookmarksController(IBookmarksService bookmarks)
         {
             this.bookmarks = bookmarks;
         }
+
+        [Authorize]
         public ActionResult Index()
         {
-            var allBookmarks = bookmarks.AllBookmarksByUserId(this.User.Identity.GetUserId()).ProjectTo<ThumbnailBookmarkViewModel>().ToList();
+            var allBookmarks = bookmarks.AllBookmarksByUserId(this.UserId).ProjectTo<ThumbnailBookmarkViewModel>().ToList();
             return View(allBookmarks);
         }
 
+        [Authorize]
         public ActionResult All()
         {
             return View();
         }
-        
+
+        [Authorize]
         public ActionResult ByTag(string name)
-        {
-            var userId = this.User.Identity.GetUserId();
-            var result = bookmarks.GetBookmarksByTagName(name, userId).ProjectTo<ThumbnailBookmarkViewModel>().ToList();
+        {          
+            var result = bookmarks.GetBookmarksByTagName(name, this.UserId).ProjectTo<ThumbnailBookmarkViewModel>().ToList();
 
             TempData["TagName"] = name;
 
             return View("Index", result);
         }
+
+        [Authorize]
         public ActionResult ByWebsite(string name)
         {
-            var userId = this.User.Identity.GetUserId();
-            var result = bookmarks.GetBookmarksByWebsiteName(name, userId).ProjectTo<ThumbnailBookmarkViewModel>().ToList();
+            var result = bookmarks.GetBookmarksByWebsiteName(name, this.UserId).ProjectTo<ThumbnailBookmarkViewModel>().ToList();
 
             TempData["WebsiteName"] = name;
 
             return View("Index", result);
         }
-        public ActionResult Search([FromUri]BookmarksFilters query)
+
+        public ActionResult Details(string title)
         {
-            var userId = this.User.Identity.GetUserId();
-            var result = bookmarks.Search(query, userId).ProjectTo<ThumbnailBookmarkViewModel>().ToList();
-               
+            var result = bookmarks.GetBookmarksByName(title, this.UserId).ProjectTo<BookmarkDetailViewModel>().FirstOrDefault();
+            return View(result);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public ActionResult Edit(int id)
+        {
+
+            return View();
+        }
+
+
+        [Authorize]
+        public ActionResult Search([System.Web.Http.FromUri]BookmarksFilters query)
+        {
+            var result = bookmarks.Search(query, this.UserId).ProjectTo<ThumbnailBookmarkViewModel>().ToList();
+
             return this.PartialView("_BookmarkResult", result);
         }
     }
