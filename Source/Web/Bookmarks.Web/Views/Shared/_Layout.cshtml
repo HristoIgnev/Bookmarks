@@ -24,6 +24,7 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     @if (Context.User.Identity.IsAuthenticated)
                     {
+                        <li>@Html.ActionLink("All Bookmarks", "Index", "Bookmarks")</li>
                         <li>@Html.ActionLink("Tags","All","Tags")</li>
                         <li>@Html.ActionLink("Websites", "All", "Websites")</li>
                     }

@@ -6,7 +6,6 @@
     using Infrastructure.Services.Contracts;
     using AutoMapper.QueryableExtensions;
     using ViewModels.Bookmarks;
-    using Microsoft.AspNet.Identity;
 
     using Infrastructure;
     public class BookmarksController : BaseController
@@ -17,9 +16,13 @@
             this.bookmarks = bookmarks;
         }
 
-        [Authorize]
         public ActionResult Index()
         {
+            if (this.UserId == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             var allBookmarks = bookmarks.AllBookmarksByUserId(this.UserId).ProjectTo<ThumbnailBookmarkViewModel>().ToList();
             return View(allBookmarks);
         }

@@ -47,6 +47,20 @@
                     }
                 </div>
             </div>
+            <div class="row">
+                <div class="col-xs-3 text-center">
+                    <strong>Tags:</strong>
+                </div>
+                <div class="col-xs-9 text-center">
+                    <div class="row">
+                        @foreach (var tag in Model.Tags)
+                        {
+                            <div class="btn btn-default">@tag.Name</div>
+                        }
+                    </div>
+                </div>
+               
+            </div>
         </div>
     </div>
 </div>

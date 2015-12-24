@@ -6,11 +6,6 @@
     {
         public ActionResult Index()
         {
-            if(this.UserId != null)
-            {
-                return RedirectToAction("Index", "Bookmarks");
-            }
-
             return View();
         }                
     }

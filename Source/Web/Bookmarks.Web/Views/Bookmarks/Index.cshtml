@@ -1,29 +1,10 @@
 ﻿@using Bookmarks.Web.ViewModels.Bookmarks
 @model IEnumerable<ThumbnailBookmarkViewModel>
-<div class="row">
-    <p class="col-md-1"><strong>Search:</strong> </p>
-
-    @using (Ajax.BeginForm("Search",
-                new
-                {
-                    TagName = TempData["TagName"],
-                    WebsiteName = TempData["WebsiteName"]
-                },
-                new AjaxOptions
-                {
-                    UpdateTargetId = "results",
-                    InsertionMode = InsertionMode.Replace,
-                    HttpMethod = "POST"
-                },
-                new
-                {
-                    id = "searchForm",
-                    @class = "col-md-3",
-                    autocomplete = "off"
-                }))
-    {
-        <input type="text" name="Title" oninput="changed()" />
-    }
+<div class="row text-center">
+    <form class="form-inline" id="searchForm" autocomplete="off">
+        <label for="searchInput" id="searchLabel"><strong>Search:</strong> </label>
+        <input class="form-control" id="searchInput" type="text" name="Title" />
+    </form>
 </div>
 
 
@@ -35,8 +16,26 @@
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script src="~/Scripts/custom.js"></script>
     <script>
-        function changed() {
-            $("#searchForm").submit();
-        }
+        $('#searchInput').on('input', function () {
+
+            var inputValue = $(this).val().toLowerCase();
+
+            $('.bookmark').each(function () {
+
+                var $this = $(this);
+
+                if (inputValue == "") {
+                    $this.show();
+                    return;
+                }
+
+                if ($this.attr('data-title').toLowerCase().indexOf(inputValue) < 0) {
+                    $this.hide();
+                }
+                else {
+                    $this.show();
+                }
+            });
+        });
     </script>
 }

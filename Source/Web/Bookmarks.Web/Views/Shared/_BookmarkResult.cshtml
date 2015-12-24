@@ -5,7 +5,7 @@
         int counter = 0;
         foreach (var bookmark in Model)
         {
-            if (counter == 0)
+            @*if (counter == 0)
             {
                 @:<div class="row">
             }
@@ -13,9 +13,9 @@
             {
                 @:</div><div class="row">
                 counter = 0;
-            }
-            <div class="col-md-2">
-                <a class="thumbnail" href="@bookmark.Url" title="@bookmark.Title" target="_blank">
+            }*@
+            <div class="col-md-2 bookmark" data-title="@bookmark.Title">
+                <a class="thumbnail" href="@bookmark.Url"  title="@bookmark.Title" target="_blank">
                     <div class="row">
                         <div class="col-xs-2">
                             <img src="@bookmark.FaviconBase64String" />
@@ -41,6 +41,6 @@
             </div>
             counter += 1;
         }
-        @:</div>
+        @*@:</div>*@
     }
 </div>
