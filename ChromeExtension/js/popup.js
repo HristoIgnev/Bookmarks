@@ -64,7 +64,7 @@ $(function(){
 
     function validateForm()
     {
-        var fields = ["inputUrl", "inputWebSite", "inputTitle"];
+        var fields = ["inputWebSite", "inputTitle"];
         var i, l = fields.length;
         var fieldname,fieldVal;
 
@@ -130,11 +130,17 @@ $(function(){
                 data: JSON.stringify(data),
                 success: function(data){
                     $('#errorNotifier').hide();
+                    $('#logged').hide();
+                    $('#body').height("10px");
                     $('#successNotifier').text(data).show();
+
                 },
                 error: function(data){
                     $('#successNotifier').hide();
-                    $('#errorNotifier').text(data.Message).show();
+                    $('#logged').hide();
+                    $('#body').height("10px");
+                    $('#errorNotifier').text(JSON.parse(data.responseText).Message).show();
+
                 },
                 contentType : "application/json"
             });

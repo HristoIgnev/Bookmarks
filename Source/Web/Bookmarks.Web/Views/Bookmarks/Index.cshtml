@@ -1,20 +1,24 @@
 ﻿@using Bookmarks.Web.ViewModels.Bookmarks
 @model IEnumerable<ThumbnailBookmarkViewModel>
+@Styles.Render("~/Content/toastr.min.css")
+
+<br />
 <div class="row text-center">
     <form class="form-inline" id="searchForm" autocomplete="off">
         <label for="searchInput" id="searchLabel"><strong>Search:</strong> </label>
         <input class="form-control" id="searchInput" type="text" name="Title" />
     </form>
 </div>
-
+<br />
 
 <div id="results">
     @Html.Partial("_BookmarkResult", Model)
 </div>
 
+
 @section scripts{
-    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-    <script src="~/Scripts/custom.js"></script>
+<script src="~/Scripts/custom.js"></script>
+<script src="~/Scripts/toastr.min.js"></script>
     <script>
         $('#searchInput').on('input', function () {
 
@@ -38,4 +42,41 @@
             });
         });
     </script>
+<script>
+        $('.removeBookmark').on('click', function () {
+            
+            var currentBookmark = $(this).closest('.bookmark');
+            var title = $(this).attr('data-btn');
+            
+            $.ajax({
+                type: "POST",
+                data: { 'title': title},
+                url: "http://localhost:8080/Bookmarks/Remove",
+                context: document.body
+            }).success(function () {
+                currentBookmark.remove();
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-center",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "2000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+                toastr.success("Bookmark removed");
+
+            }).error(function(){
+            });
+        });
+</script>
 }

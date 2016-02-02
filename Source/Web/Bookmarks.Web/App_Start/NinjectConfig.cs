@@ -70,7 +70,7 @@ namespace Bookmarks.Web.App_Start
         {
             kernel.Bind<DbContext>().To<BookmarksDbContext>().InRequestScope();
 
-            //kernel.Bind(typeof(IDeletableEntityRepository<>)).To(typeof(DeletableEntityRepository<>));
+            kernel.Bind(typeof(IDeletableRepository<>)).To(typeof(DeletableEntityRepository<>));
             kernel.Bind(typeof(IRepository<>)).To(typeof(EfGenericRepository<>));
 
             kernel.Bind(k => k.From(AssemblyConstants.InfrastructureAssembly)

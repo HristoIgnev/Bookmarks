@@ -1,21 +1,13 @@
 ﻿@using Bookmarks.Web.ViewModels.Bookmarks
+@using Bookmarks.Web.App_Code
 @model IEnumerable<ThumbnailBookmarkViewModel>
-<div id="bm-tiles">
+<div id="bm-tiles" class="row">
     @{
         int counter = 0;
         foreach (var bookmark in Model)
         {
-            @*if (counter == 0)
-            {
-                @:<div class="row">
-            }
-            else if (counter > 0 && counter % 6 == 0)
-            {
-                @:</div><div class="row">
-                counter = 0;
-            }*@
             <div class="col-md-2 bookmark" data-title="@bookmark.Title">
-                <a class="thumbnail" href="@bookmark.Url"  title="@bookmark.Title" target="_blank">
+                <a class="thumbnail" href="@bookmark.Url" title="@bookmark.Title" target="_blank">
                     <div class="row">
                         <div class="col-xs-2">
                             <img src="@bookmark.FaviconBase64String" />
@@ -32,15 +24,15 @@
                 </a>
                 <div class="row details">
                     <div class="col-xs-6 text-center">
-                        @Html.ActionLink("Details", "Details", "Bookmarks", new { title = bookmark.Title }, null)
+                        @Html.ActionLink("Details", "Details", "Bookmarks", new { id = bookmark.Id, title = Html.Sanitize(bookmark.Title) }, null)
                     </div>
-                     <div class="col-xs-6 text-center">
-                        @Html.ActionLink("Remove", "Remove", "Bookmarks", new { id = bookmark.Id }, null)
+                    <div class="col-xs-6 text-center">
+                        @*@Html.ActionLink("Remove", "Remove", "Bookmarks", new { id = bookmark.Id }, null)*@
+                        <button type="button" class="btn-link removeBookmark" data-btn="@bookmark.Title">Remove</button>
                     </div>
                 </div>
             </div>
             counter += 1;
         }
-        @*@:</div>*@
     }
 </div>

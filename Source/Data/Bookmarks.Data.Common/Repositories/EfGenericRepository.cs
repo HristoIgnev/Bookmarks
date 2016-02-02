@@ -93,7 +93,7 @@
             entry.State = EntityState.Detached;
         }
 
-        public IQueryable<T> Include<TProparty>(Expression<Func<T, TProparty>> conditions)
+        public virtual IQueryable<T> Include<TProparty>(Expression<Func<T, TProparty>> conditions)
         {
             return this.All().Include(conditions);
         }

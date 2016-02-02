@@ -6,7 +6,7 @@
 
     using Bookmarks.Data.Common.Contracts;
 
-    public class DeletableEntityRepository<T> : EfGenericRepository<T>, IDeletableEntityRepository<T>
+    public class DeletableEntityRepository<T> : EfGenericRepository<T>, IDeletableRepository<T>
         where T : class, IDeletableEntity
     {
         public DeletableEntityRepository(DbContext context)
@@ -35,6 +35,11 @@
         public void ActualDelete(T entity)
         {
             base.Delete(entity);
+        }
+
+        public IQueryable<T> AllDeleted()
+        {
+            return base.All().Where(x => x.IsDeleted);
         }
     }
 }

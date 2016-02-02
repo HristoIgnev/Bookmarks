@@ -1,16 +1,30 @@
 ﻿@using Bookmarks.Web.ViewModels.Websites
 @model IEnumerable<WebsiteViewModel>
-
-<ul class="nav nav-pills" role="tablist">
-    @foreach (var website in Model)
-    {
-        <li role="presentation">
-            <a href="/Bookmarks/ByWebsite?name=@website.Name">                
-                <img src="@website.FaviconBase64String"/>&nbsp;@website.Name
-                <span class="badge">
-                    @website.UsedTimes
-                </span>
-            </a>
-        </li>
-    }
-</ul>
+<div class="container">
+    <ul class="nav nav-pills" role="tablist">
+        @{
+            char nextChar = char.MaxValue;
+            foreach (var website in Model)
+            {
+                char currentChar = website.Name[0];
+                if (currentChar != nextChar)
+                {
+                    <br />
+                    <br />
+                    <div class="row">
+                        <li><strong class="text-uppercase">@currentChar</strong><hr class="delimater" /></li>
+                    </div>
+                    nextChar = currentChar;
+                }
+                <li role="presentation">
+                    <a href="@Url.Action("ByWebsite","Bookmarks", new { name = website.Name })">
+                        <img src="@website.FaviconBase64String" />&nbsp;@website.Name
+                        <span class="badge">
+                            @website.UsedTimes
+                        </span>
+                    </a>
+                </li>
+            }
+        }
+    </ul>
+</div>

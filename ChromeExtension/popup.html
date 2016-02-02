@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet"  href="css/bootstrap.css" type="text/css">
-    <link href="css/jquery.tagit.css" rel="stylesheet" type="text/css">
-    <link href="css/tagit.ui-zendesk.css" rel="stylesheet" type="text/css">
+    <link href="css/tagit.css" rel="stylesheet" type="text/css">
 
 </head>
-<body>
+<body id="body">
     <div id="notLogged" class="text-center">
        Please visit bookmarks.com and log in!
     </div>
-    <div id="errorNotifier">
+    <div class="text-center" id="errorNotifier">
     </div>
-    <div id="successNotifier">
+    <div class="text-center" id="successNotifier">
     </div>
     <div class="container" id="logged" >
         <div class="text-right">Logged as <a href="http://localhost:54617/"  target="_blank" id="loggedAs" ></a></div>
@@ -49,7 +48,7 @@
             </div>
             <p><strong>Insert up to five tags, with maximum length of each 20, in the input below: </strong></p>
 
-                <input type="hidden" name="tags" id="mySingleField" value="" >
+                <input type="hidden" name="tags" id="mySingleField" autocomplete="off" value="" >
             <div class="">
             <ul id="singleFieldTags"></ul>
                 </div >
@@ -66,13 +65,9 @@
 
     <script src="js/jquery.min.js" type="text/javascript"></script>
 
-    <script src="js/ui.js" type="text/javascript" ></script>
+    <script src="js/ui.min.js" type="text/javascript" ></script>
 
     <script src="js/tag-it.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/popup.js" type="text/javascript" ></script>
-
-
-
-
 </body>
 </html>

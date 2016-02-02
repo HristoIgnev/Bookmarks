@@ -17,7 +17,7 @@
 
         public IQueryable<Website> AllWebsitesByUser(string userId)
         {
-            var allWebsites = bookmarks.All().Where(b => b.UserId == userId).Select(x => x.WebSite).Distinct();
+            var allWebsites = bookmarks.All().Where(b => b.UserId == userId).Select(x => x.WebSite).Distinct().OrderBy(w =>w.Name);
             return allWebsites;
         }
 

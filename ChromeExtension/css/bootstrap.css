@@ -2026,7 +2026,9 @@ h2{
 }
 #errorNotifier{
   color: #ac2925;
+  margin-top:2px;
 }
 #successNotifier{
   color: #449d44;
+  margin-top:2px;
 }

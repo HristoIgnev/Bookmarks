@@ -4,8 +4,11 @@
     using System.ComponentModel.DataAnnotations;
 
     using Common;
+    using Common.Contracts;
     using System.ComponentModel.DataAnnotations.Schema;
-    public class Bookmark 
+    using System;
+
+    public class Bookmark : IDeletableEntity
     {
         private ICollection<Tag> tags;
 
@@ -35,6 +38,8 @@
 
         public string UserId { get; set; }
 
+        public bool IsDeleted { get; set; }
+
         public virtual User User { get; set; }
 
         public virtual ICollection<Tag> Tags
@@ -48,5 +53,6 @@
                 this.tags = value;
             }
         }
+
     }
 }

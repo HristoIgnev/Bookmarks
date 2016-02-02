@@ -1,0 +1,62 @@
+﻿@using Bookmarks.Web.RequestModels
+@model EditBookmarkRequestModel
+
+<h1>Edit</h1>
+
+@using (Html.BeginForm("Edit", "Bookmarks", new { id = Model.Id }, FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Title, new { @class = "col-md-1 control-label" })
+        <div class="col-md-11">
+            @Html.EditorFor(model => model.Title,
+                new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+        <div>
+            @Model.Title
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, new { @class = "col-md-1 control-label" })
+        <div class="col-md-11">
+            @Html.EditorFor(model => model.Description,
+                new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="hidden" name="Tags" id="mySingleField" autocomplete="off" value="@string.Join(",",Model.Tags)">
+        <div class="">
+            <ul id="singleFieldTags"></ul>
+        </div>
+    </div>
+    <input type="submit" class="btn btn-primary" value="save" />
+}
+@section scripts{
+    <script src="~/Scripts/ui.min.js"></script>
+    <script src="~/Scripts/tagit.min.js"></script>
+    <script>
+        $('#singleFieldTags').tagit({
+            singleField: true,
+            tagLimit: 5,
+            singleFieldNode: $('#mySingleField')
+        });
+
+        $(".tagInputCssHelper").attr("maxlength", 20).focusin(function () {
+            $(singleFieldTags).css({
+                "border-color": "#66afe9",
+                "outline": "0",
+                "-webkit-box-shadow": "inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6)",
+                "box-shadow": "inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6)"
+            }).
+                focusout(function () {
+                    $(singleFieldTags).css({
+                        "border": "1px solid #C6C6C6",
+                        "-webkit-box-shadow": "0px 0px 0px #4195fc",
+                        "box-shadow": "inset 0 1px 0px #C6C6C6, 0 0 0px #C6C6C6"
+                    })
+                });
+        });
+    </script>
+}
